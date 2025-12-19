@@ -43,7 +43,7 @@ function Login() {
           </div>
 
           {/* login button */}
-          <button className="bg-gray-500 text-white font-bold py-2 rounded-md mt-4 hover:bg-gray-600 transition">
+          <button className="bg-teal-600 text-white font-bold py-4 text-lg rounded-md mt-4 hover:bg-teal-700 transition">
             Login
           </button>
         </div>
