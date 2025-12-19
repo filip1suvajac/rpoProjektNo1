@@ -27,6 +27,19 @@ function Register() {
                     />
                 </div>
 
+                {/* username */}
+                <div className="flex flex-col">
+                    <label htmlFor="username" className="mb-1 font-medium text-gray-700">
+                    Username
+                    </label>
+                    <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your username"
+                    className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    />
+                </div>
+
 
 
 
