@@ -1,16 +1,14 @@
-import React from "react";
-
 function Login() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       {/* center block */}
-      <div className="bg-white w-[400px] rounded-xl shadow-lg">
+      <div className="bg-slate-800 w-[800px] rounded-xl shadow-2xl">
         {/* top bar */}
-        <div className="bg-gray-500 rounded-t-xl p-4 flex items-center gap-2">
+        <div className="bg-slate-800 rounded-t-xl p-8 flex items-center gap-3">
           {/* logo za enkrat prazno */}
-          <div className="w-8 h-8 bg-white rounded-full"></div>
+          <div className="w-12 h-12 bg-slate-700 rounded-full"></div>
           {/* app name */}
-          <h2 className="text-white font-bold text-lg">MyApp</h2>
+          <h2 className="text-white font-bold text-3xl">MyApp</h2>
         </div>
 
         {/* body */}
