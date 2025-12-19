@@ -12,17 +12,17 @@ function Login() {
         </div>
 
         {/* body */}
-        <div className="p-8 flex flex-col gap-4">
+        <div className="p-10 flex flex-col gap-8">
           {/* email/username */}
           <div className="flex flex-col">
-            <label htmlFor="email" className="mb-1 font-medium text-gray-700">
-              Email or Username
+            <label htmlFor="email" className="mb-3 font-medium text-gray-300 text-base">
+              Email or Username <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               id="email"
               placeholder="Enter your email or username"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="bg-slate-900 border border-slate-600 rounded-md p-5 text-white text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
