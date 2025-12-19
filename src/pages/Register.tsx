@@ -8,7 +8,7 @@ function Register() {
             {/* logo za enkrat prazno */}
             <div className="w-8 h-8 bg-white rounded-full"></div>
             {/* app name */}
-            <h2 className="text-white font-bold text-lg">MyApp</h2>
+            <h2 className="text-white font-bold text-lg">Register</h2>
             </div>
 
 
@@ -40,6 +40,57 @@ function Register() {
                     />
                 </div>
 
+                {/* password */}
+                <div className="flex flex-col">
+                    <label
+                    htmlFor="password"
+                    className="mb-1 font-medium text-gray-700"
+                    >
+                    Password
+                    </label>
+                    <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    />
+                </div>
+
+                {/* repeat password */}
+                <div className="flex flex-col">
+                    <label
+                    htmlFor="repeat-password"
+                    className="mb-1 font-medium text-gray-700"
+                    >
+                    Repeat Password
+                    </label>
+                    <input
+                    type="password"
+                    id="repeat-password"
+                    placeholder="Repeat your password"
+                    className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    />
+                </div>
+
+                {/* date of birth */}
+                <div className="flex flex-col">
+                    <label
+                    htmlFor="date-of-birth"
+                    className="mb-1 font-medium text-gray-700"
+                    >
+                    Date of Birth
+                    </label>
+                    <input
+                    type="date"
+                    id="date-of-birth"
+                    className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    />
+                </div>
+
+                {/* register button */}
+                <button className="bg-gray-500 text-white font-bold py-2 rounded-md mt-4 hover:bg-gray-600 transition">
+                    Register
+                </button>
 
 
 
