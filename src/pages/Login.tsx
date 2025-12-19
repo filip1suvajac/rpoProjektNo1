@@ -30,15 +30,15 @@ function Login() {
           <div className="flex flex-col">
             <label
               htmlFor="password"
-              className="mb-1 font-medium text-gray-700"
+              className="mb-3 font-medium text-gray-300 text-base"
             >
-              Password
+              Password <span className="text-red-500">*</span>
             </label>
             <input
               type="password"
               id="password"
               placeholder="Enter your password"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="bg-slate-900 border border-slate-600 rounded-md p-5 text-white text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
