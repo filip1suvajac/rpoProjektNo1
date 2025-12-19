@@ -1,9 +1,14 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Register";
+
 function App() {
   return (
-    <div className="flex justify-center">
-      <p className="font-bold text-blue-500">Najboljsi RPO projekt v zgodovini </p>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/register" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
