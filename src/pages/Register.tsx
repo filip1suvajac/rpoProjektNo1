@@ -12,7 +12,25 @@ function Register() {
             </div>
 
 
-            
+            {/* body */}
+            <div className="p-8 flex flex-col gap-4">
+                {/* email */}
+                <div className="flex flex-col">
+                    <label htmlFor="email" className="mb-1 font-medium text-gray-700">
+                    Email
+                    </label>
+                    <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    />
+                </div>
+
+
+
+
+         </div>
       </div>
     </div>
   );
