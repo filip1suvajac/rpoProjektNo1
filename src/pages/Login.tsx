@@ -1,6 +1,6 @@
 function Login() {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-slate-700">
       {/* center block */}
       <div className="bg-slate-800 w-[800px] rounded-xl shadow-2xl">
         {/* top bar */}
