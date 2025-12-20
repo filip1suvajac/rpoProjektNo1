@@ -1,6 +1,6 @@
 function Register() {
   return (
-    <div className="flex justify-center items-center h-screen bg-slate-700">
+    <div className="flex justify-center items-center min-h-screen bg-slate-700 overflow-y-auto py-8">
       {/* center block */}
       <div className="bg-slate-800 w-[800px] rounded-xl shadow-2xl">
         {/* top bar */}
