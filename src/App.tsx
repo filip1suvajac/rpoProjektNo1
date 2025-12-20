@@ -1,9 +1,9 @@
+import { GameList } from "./components/GameList/GameList";
+
 function App() {
   return (
-    <div className="flex justify-center">
-      <p className="font-bold text-blue-500">Najboljsi RPO projekt v zgodovini </p>
-    </div>
-  )
+      <GameList />
+  );
 }
 
 export default App;
