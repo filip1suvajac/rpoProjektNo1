@@ -49,15 +49,15 @@ function Register() {
           <div className="flex flex-col">
             <label
               htmlFor="password"
-              className="mb-1 font-medium text-gray-700"
+              className="mb-3 font-medium text-gray-300 text-base"
             >
-              Password
+              Password <span className="text-red-500">*</span>
             </label>
             <input
               type="password"
               id="password"
               placeholder="Enter your password"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="bg-slate-900 border border-slate-600 rounded-md p-5 text-white text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
@@ -65,15 +65,15 @@ function Register() {
           <div className="flex flex-col">
             <label
               htmlFor="repeat-password"
-              className="mb-1 font-medium text-gray-700"
+              className="mb-3 font-medium text-gray-300 text-base"
             >
-              Repeat Password
+              Repeat Password <span className="text-red-500">*</span>
             </label>
             <input
               type="password"
               id="repeat-password"
               placeholder="Repeat your password"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="bg-slate-900 border border-slate-600 rounded-md p-5 text-white text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
@@ -81,19 +81,19 @@ function Register() {
           <div className="flex flex-col">
             <label
               htmlFor="date-of-birth"
-              className="mb-1 font-medium text-gray-700"
+              className="mb-3 font-medium text-gray-300 text-base"
             >
-              Date of Birth
+              Date of Birth <span className="text-red-500">*</span>
             </label>
             <input
               type="date"
               id="date-of-birth"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="bg-slate-900 border border-slate-600 rounded-md p-5 text-white text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
           {/* register button */}
-          <button className="bg-gray-500 text-white font-bold py-2 rounded-md mt-4 hover:bg-gray-600 transition">
+          <button className="bg-teal-600 text-white font-bold py-4 text-lg rounded-md mt-4 hover:bg-teal-700 transition">
             Register
           </button>
         </div>
