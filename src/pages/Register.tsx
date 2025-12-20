@@ -8,21 +8,24 @@ function Register() {
           {/* logo za enkrat prazno */}
           <div className="w-12 h-12 bg-slate-700 rounded-full"></div>
           {/* app name */}
-          <h2 className="text-white font-bold text-lg">Register</h2>
+          <h2 className="text-white font-bold text-3xl">Register</h2>
         </div>
 
         {/* body */}
-        <div className="p-8 flex flex-col gap-4">
+        <div className="p-10 flex flex-col gap-8">
           {/* email */}
           <div className="flex flex-col">
-            <label htmlFor="email" className="mb-1 font-medium text-gray-700">
-              Email
+            <label
+              htmlFor="email"
+              className="mb-3 font-medium text-gray-300 text-base"
+            >
+              Email <span className="text-red-500">*</span>
             </label>
             <input
               type="email"
               id="email"
               placeholder="Enter your email"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="bg-slate-900 border border-slate-600 rounded-md p-5 text-white text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
@@ -30,15 +33,15 @@ function Register() {
           <div className="flex flex-col">
             <label
               htmlFor="username"
-              className="mb-1 font-medium text-gray-700"
+              className="mb-3 font-medium text-gray-300 text-base"
             >
-              Username
+              Username <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               id="username"
               placeholder="Enter your username"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="bg-slate-900 border border-slate-600 rounded-md p-5 text-white text-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
