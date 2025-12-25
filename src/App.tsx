@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Register";
 import { useState } from "react";
 import Tabs from "./components/Tabs";
 import CasinoBetsTable from "./components/CasinoBetsTable";
@@ -9,6 +11,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/register" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
         <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
