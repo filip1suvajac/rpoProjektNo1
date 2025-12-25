@@ -1,3 +1,8 @@
+import { GameList } from "./components/GameList/GameList";
+
+function App() {
+  return (
+      <GameList />
 // File: src/App.tsx
 import React from 'react';
 import FAQList, { type FAQ } from './components/FAQ';
