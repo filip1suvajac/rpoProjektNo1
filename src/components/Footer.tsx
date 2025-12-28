@@ -30,7 +30,7 @@ export default function Footer() {
   }, [isDropdownOpen]);
 
   return (
-    <footer className="bg-gray-800 text-gray-300 py-12 mt-16">
+    <footer className="bg-[#061E2A] text-gray-300 py-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div>
@@ -103,9 +103,7 @@ export default function Footer() {
             )}
           </div>
 
-          <a href="/" title="Pojdi na domačo stran" className="inline-block">
-            <img src={rpoLogo} alt="RPO Logo" className="h-8 mx-auto mb-4 opacity-100 hover:opacity-70 transition cursor-pointer" />
-          </a>
+          <img src={rpoLogo} alt="RPO Logo" className="h-16 mx-auto mb-4" />
           <p className="text-sm">© 2025 RPO Projektna naloga</p>
         </div>
       </div>

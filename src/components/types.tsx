@@ -1,10 +1,10 @@
-export type GameCategory = "All" | "Slots" | "Live" | "Originals" | "Table" | "New";
+export type GameCategory = "Vse" | "Sloti" | "Vživo" | "Originali" | "Miza" | "Novo";
 
 export type Game = {
   id: string;
   title: string;
   provider: string;
-  category: Exclude<GameCategory, "All">;
+  category: Exclude<GameCategory, "Vse">;
   isNew?: boolean;
   isHot?: boolean;
   image: string;

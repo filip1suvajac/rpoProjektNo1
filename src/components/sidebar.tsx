@@ -26,14 +26,14 @@ const Sidebar: React.FC<SidebarProps> = ({
   selectedLanguage,
   colorScheme,
 }) => {
-  const bg = colorScheme?.bg || "bg-gray-900";
+  const bg = colorScheme?.bg || "bg-[#0F212E]";
   const hover = colorScheme?.hover || "hover:bg-gray-800";
 
   return (
     <aside
       className={`
         fixed top-0 left-0 h-full text-white flex flex-col transition-all duration-300
-        ${isOpen ? "w-64" : "w-16"} ${bg}
+        ${isOpen ? "w-64 z-50" : "w-16"} ${bg}
       `}
     >
       {/* Toggle */}

@@ -2,17 +2,17 @@ import { useMemo, useState } from "react";
 import { games } from "./games";
 import type { Game, GameCategory } from "./types";
 
-const categories: GameCategory[] = ["All", "Slots", "Live", "Originals", "Table", "New"];
+const categories: GameCategory[] = ["Vse", "Sloti", "Vživo", "Originali", "Miza", "Novo"];
 
 function matchesCategory(game: Game, cat: GameCategory): boolean {
-  if (cat === "All") return true;
-  if (cat === "New") return Boolean(game.isNew);
+  if (cat === "Vse") return true;
+  if (cat === "Novo") return Boolean(game.isNew);
   return game.category === cat;
 }
 
 export function GameList() {
   const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<GameCategory>("All");
+  const [activeCategory, setActiveCategory] = useState<GameCategory>("Vse");
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -30,17 +30,16 @@ export function GameList() {
   }, [query, activeCategory]);
 
   return (
-    <div className="min-h-screen bg-[#0b0f1a] text-white">
+    <div className="min-h-screen bg-[#1A2C38] text-white">
       {/* Top header */}
-      <div className="sticky top-0 z-10 border-b border-white/10 bg-[#0b0f1a]/80 backdrop-blur">
+      <div className="border-t border-white/10 bg-[#1A2C38] backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 py-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-xl bg-white/10" />
               <div>
-                <div className="text-lg font-semibold leading-tight">Games</div>
+                <div className="text-lg font-semibold leading-tight">Igre</div>
                 <div className="text-xs text-white/60">
-                  Browse and start playing
+                  Poišči svojo igro in začni igrati
                 </div>
               </div>
             </div>
@@ -50,7 +49,7 @@ export function GameList() {
                 <input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search games or providers..."
+                  placeholder="Išči igre ali ponudnike ..."
                   className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm outline-none placeholder:text-white/40 focus:border-white/20"
                 />
                 <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-white/50">
@@ -60,7 +59,7 @@ export function GameList() {
 
               <div className="flex items-center justify-between sm:justify-start">
                 <span className="text-xs text-white/60">
-                  Showing <span className="text-white">{filtered.length}</span>
+                  Prikazujem <span className="text-white">{filtered.length}</span>
                 </span>
               </div>
             </div>
@@ -94,10 +93,10 @@ export function GameList() {
         {/* Quick section header */}
         <div className="mb-4 flex items-center justify-between">
           <div className="text-sm text-white/70">
-            Popular picks
+            Priljubljene izbire
           </div>
           <button className="text-sm text-white/70 hover:text-white transition">
-            View all
+            Prikaži vse
           </button>
         </div>
 
@@ -111,14 +110,14 @@ export function GameList() {
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
-            <div className="text-base font-semibold">No games found</div>
+            <div className="text-base font-semibold">Ne najdem te igre</div>
             <div className="mt-1 text-sm text-white/60">
-              Try a different search or category.
+              Poskusi drugo igro ali kategorijo.
             </div>
             <button
               onClick={() => {
                 setQuery("");
-                setActiveCategory("All");
+                setActiveCategory("Vse");
               }}
               className="mt-4 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black"
             >
@@ -154,7 +153,7 @@ function GameCard({ game }: { game: Game }) {
           )}
           {game.isNew && (
             <span className="rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-white">
-              NEW
+              NOVO
             </span>
           )}
         </div>
@@ -162,7 +161,7 @@ function GameCard({ game }: { game: Game }) {
         {/* Play overlay */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
           <button className="pointer-events-auto rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black">
-            Play
+            Igraj
           </button>
         </div>
       </div>

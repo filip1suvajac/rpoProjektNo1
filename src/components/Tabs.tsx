@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Tab = 'casino' | 'leaderboard';
 
 type TabsProps = {
@@ -8,7 +6,7 @@ type TabsProps = {
 };
 
 const Tabs: React.FC<TabsProps> = ({ activeTab, onChange }) => (
-  <div className="inline-flex bg-slate-900 rounded-full p-1">
+  <div className="inline-flex bg-[#0F212E] rounded-full p-1">
     {}
     <button
       onClick={() => onChange('casino')}
