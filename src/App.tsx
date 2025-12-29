@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useState } from "react";
+import TopBar from "./components/TopBar";
+
 import {
   ShieldExclamationIcon,
   UsersIcon,
@@ -90,8 +92,10 @@ function App() {
         />
       )}
         <div className={`flex-1 transition-all duration-300 max-w-full pl-16`}>
+          <TopBar sidebarOpen={sidebarOpen} />
+
           <Routes>
-            <Route path="/" element={<Home sidebarOpen={sidebarOpen}  />} />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

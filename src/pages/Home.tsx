@@ -5,7 +5,6 @@ import Tabs from "../components/Tabs";
 import CasinoBetsTable from "../components/CasinoBetsTable";
 import LeaderboardTable from "../components/LeaderboardTable";
 import { Link } from "react-router-dom";
-import TopBar from "../components/TopBar";
 
 const sampleFaqs: FAQ[] = [
   {
@@ -40,15 +39,13 @@ const sampleFaqs: FAQ[] = [
   },
 ];
 
-export default function Home({ sidebarOpen }: { sidebarOpen: boolean }) {
+export default function Home() {
   const [activeTab, setActiveTab] = useState<"casino" | "leaderboard">("casino");
 
   return (
     <div className="min-h-screen flex flex-col bg-[#1A2C38]">
       {/* HEADER */}
       <div className="bg-[url('/src/assets/header.png')] bg-cover bg-center text-white relative">
-        <TopBar sidebarOpen={sidebarOpen} />
-
         <section className="flex items-center justify-between pb-24 pt-36 max-w-[70%] mx-auto">
           <div className="flex flex-col items-start text-left max-w-xl">
             <h1 className="text-4xl font-extrabold mb-4">
