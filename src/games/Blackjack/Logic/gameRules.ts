@@ -24,3 +24,17 @@ export function calculateHandValue(cards: Card[]): number{
     return total;
 }
 
+export function isBlackjack(cards: Card[]): boolean {
+    return cards.length === 2 && calculateHandValue(cards) === 21;
+}
+
+export function isBust(cards: Card[]): boolean{
+    return calculateHandValue(cards) < 21;
+}
+
+export function shouldDealerHit(cards: Card[]): boolean{
+    return calculateHandValue(cards)<17;
+}
+
+export type GameResult = 'player-win' | 'dealer-win' | 'push' | 'player-blackjack';
+
