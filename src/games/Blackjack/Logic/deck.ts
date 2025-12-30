@@ -40,3 +40,16 @@ export function shuffleDeck(deck: Deck): Deck {
   
   return { cards };
 }
+
+export function dealCard(deck: Deck): { card: Card; remainingDeck: Deck}{
+    if(deck.cards.length === 0){
+        throw new Error('Deck is empty');
+    }
+
+    const [card, ...remainingCards] = deck.cards;
+
+    return{
+        card,
+        remainingDeck: { cards: remainingCards}
+    };
+}
