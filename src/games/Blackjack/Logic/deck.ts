@@ -53,3 +53,19 @@ export function dealCard(deck: Deck): { card: Card; remainingDeck: Deck}{
         remainingDeck: { cards: remainingCards}
     };
 }
+
+export function dealCards(deck: Deck, count: number): { cards: Card[]; remainingDeck: Deck } {
+    const dealtCards: Card[] = [];
+    let currentDeck = deck;
+
+    for(let i = 0; i<count; i++){
+        const { card, remainingDeck } = dealCard(currentDeck);
+        dealtCards.push(card);
+        currentDeck = remainingDeck;
+    }
+
+    return {
+        cards: dealtCards,
+        remainingDeck: currentDeck
+    };
+}
