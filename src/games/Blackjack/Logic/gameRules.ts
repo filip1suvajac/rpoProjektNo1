@@ -1,4 +1,4 @@
-import { Card, Rank } from './deck';
+import type { Card, Rank } from './deck';
 
 export function getCardValue(rank: Rank): number {
     if (rank === 'A') return 11;
@@ -38,3 +38,40 @@ export function shouldDealerHit(cards: Card[]): boolean{
 
 export type GameResult = 'player-win' | 'dealer-win' | 'push' | 'player-blackjack';
 
+export function determineWinner(
+    playerCards: Card[],
+    dealerCards: Card[]
+): GameResult {
+    const playerValue = calculateHandValue(playerCards);
+    const dealerValue = calculateHandValue(dealerCards);
+    const playerBJ = isBlackjack(playerCards);
+    const dealerBJ = isBlackjack(dealerCards);
+
+    if(isBust(playerCards)) return 'dealer-win';
+
+    if(isBust(dealerCards)) return 'player-win';
+
+    if(playerBJ && dealerBJ) return 'push';
+
+    if(playerBJ) return 'player-blackjack';
+
+    if(dealerBJ) return 'dealer-win';
+
+    if(playerValue > dealerValue) return 'player-win';
+    if(dealerValue > playerValue) return 'dealer-win';
+
+    return 'push';
+}
+
+export function calculatePayout(result: GameResult, bet: number): number{
+    switch(result){
+        case 'player-blackjack':
+            return bet*2.5;
+        case 'player-win':
+            return bet*2;
+        case 'push':
+            return bet;
+        case 'dealer-win':
+            return 0;
+    }
+}
