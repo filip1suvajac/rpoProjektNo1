@@ -17,6 +17,7 @@ import {
   GlobeAltIcon,
 } from "@heroicons/react/24/solid";
 import Footer from "./components/Footer";
+import Team from "./pages/Team";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -35,8 +36,8 @@ function App() {
     },
     {
       icon: <UsersIcon className="w-5 h-5" />,
-      label: "Povezava za partnerja",
-      to: "/povzapar",
+      label: "Člani ekipe",
+      to: "/team",
     },
     {
       icon: <TrophyIcon className="w-5 h-5" />,
@@ -98,6 +99,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/team" element={<Team />} />
           </Routes>
           
           <Footer />
