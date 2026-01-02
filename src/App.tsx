@@ -5,19 +5,19 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useState } from "react";
 import TopBar from "./components/TopBar";
-
+import { AuthProvider } from "./AuthContext"
 import {
   ShieldExclamationIcon,
   UsersIcon,
   TrophyIcon,
-  DocumentIcon,
   GiftIcon,
-  ChatBubbleLeftIcon,
   HomeIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/solid";
 import Footer from "./components/Footer";
 import Team from "./pages/Team";
+import ResponsiblePlaying from "./pages/ResponsiblePlaying";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -37,7 +37,7 @@ function App() {
     {
       icon: <UsersIcon className="w-5 h-5" />,
       label: "Člani ekipe",
-      to: "/team",
+      to: "/ekipa",
     },
     {
       icon: <TrophyIcon className="w-5 h-5" />,
@@ -45,19 +45,9 @@ function App() {
       to: "/vipklub",
     },
     {
-      icon: <DocumentIcon className="w-5 h-5" />,
-      label: "Blog",
-      to: "/blog",
-    },
-    {
-      icon: <ChatBubbleLeftIcon className="w-5 h-5" />,
-      label: "Forum",
-      to: "/forum",
-    },
-    {
       icon: <ShieldExclamationIcon className="w-5 h-5" />,
       label: "Odgovorno Igranje",
-      to: "/odgovornoigranje",
+      to: "/pametno-stavi",
     },
     {
       icon: <GlobeAltIcon className="w-5 h-5" />,
@@ -79,6 +69,8 @@ function App() {
   ];
 
   return (
+        <AuthProvider>
+
       <div className="flex">
         <Sidebar
           items={menuItems}
@@ -97,14 +89,18 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/prijava" element={<Login />} />
+            <Route path="/registracija" element={<Register />} />
+            <Route path="/ekipa" element={<Team />} />
+            <Route path="/pametno-stavi" element={<ResponsiblePlaying />} />
+            <Route path="*" element={<NotFound />} />
+
           </Routes>
           
           <Footer />
         </div>
       </div>
+      </AuthProvider>
   );
 }
 

@@ -22,8 +22,8 @@ const teamMembers: Member[] = [
 export default function Team() {
   return (
     <div className="min-h-screen bg-[#1A2C38] text-white ">
-      <div className="max-w-[80%] py-10 mx-auto">
-      <h1 className="text-4xl font-bold mb-10 text-center">Člani Skupine</h1>
+      <div className="max-w-[80%] pt-28 pb-10 mx-auto">
+      <h1 className="text-4xl font-bold mb-10 text-left">Člani Skupine</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {teamMembers.map(member => (
           <div

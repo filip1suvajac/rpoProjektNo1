@@ -1,99 +1,127 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import DatePicker from "../components/DatePicker";
+import { supabase } from "../supabaseClient";
+import { useAuth } from "../AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [birthDate, setBirthDate] = useState<Date | undefined>();
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const { login } = useAuth(); // opcijsko, če želiš samodejno login
+
+  const handleRegister = async () => {
+    setError(null);
+
+    if (password !== repeatPassword) {
+      setError("Gesli se ne ujemata");
+      return;
+    }
+
+    try {
+      // 1️⃣ Registracija v Supabase Auth
+      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            username,
+            birth_date: birthDate?.toISOString().split("T")[0],
+          },
+        },
+      });
+
+      if (signUpError) {
+        setError(signUpError.message);
+        return;
+      }
+
+      // 2️⃣ Ustvari zapis v tabeli 'profiles'
+      if (signUpData?.user) {
+        const { error: profileError } = await supabase
+          .from("profiles")
+          .insert([
+            {
+              id: signUpData.user.id,
+              username,
+              birth_date: birthDate?.toISOString().split("T")[0],
+            },
+          ]);
+
+        if (profileError) {
+          setError(profileError.message);
+          return;
+        }
+      }
+
+      // 3️⃣ Po želji: samodejno prijavi ali preusmeri
+      // await login(email, password);
+      alert("Uspešna registracija! Preusmerjam na prijavo...");
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+      setError("Prišlo je do napake pri registraciji.");
+    }
+  };
 
   return (
     <div className="flex justify-center items-center pb-20 pt-32 bg-[#1A2C38]">
-      {/* center block */}
-      <div className="bg-[#0F212E] w-[600px] rounded-xl border border-white/20">
-        {/* top bar */}
-        <div className="bg-[#1A2C38] rounded-t-xl p-6 flex items-center gap-3">
-          <h2 className="text-white font-bold text-2xl">Registracija</h2>
+      <div className="bg-[#0F212E] w-[600px] rounded-xl border border-white/20 p-8 flex flex-col gap-6">
+        <h2 className="text-white font-bold text-2xl">Registracija</h2>
+
+        <input
+          type="email"
+          placeholder="E-naslov"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        />
+
+        <input
+          type="text"
+          placeholder="Uporabniško ime"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        />
+
+        <input
+          type="password"
+          placeholder="Geslo"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        />
+
+        <input
+          type="password"
+          placeholder="Ponovi geslo"
+          value={repeatPassword}
+          onChange={(e) => setRepeatPassword(e.target.value)}
+          className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        />
+
+        <div className="flex flex-col gap-3">
+          <label className="text-gray-300">
+            Datum rojstva <span className="text-red-500">*</span>
+          </label>
+          <DatePicker value={birthDate} onChange={setBirthDate} />
         </div>
 
-        {/* body */}
-        <div className="p-8 flex flex-col gap-8">
-          {/* email */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="email"
-              className="mb-3 text-gray-300 text-base"
-            >
-              E-naslov <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="janez.novak@gmail.com"
-              className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white text-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
-          </div>
+        {error && <p className="text-red-500">{error}</p>}
 
-          {/* username */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="username"
-              className="mb-3 text-gray-300 text-base"
-            >
-              Uporabniško ime <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="username"
-              placeholder="janez123"
-              className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white text-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
-          </div>
-
-          {/* password */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="password"
-              className="mb-3 text-gray-300 text-base"
-            >
-              Geslo <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="..."
-              className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white text-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
-          </div>
-
-          {/* repeat password */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="repeat-password"
-              className="mb-3 text-gray-300 text-base"
-            >
-              Ponovi geslo <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              id="repeat-password"
-              placeholder="..."
-              className="bg-[#0F212E] border border-slate-600 rounded-md p-3 text-white text-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
-          </div>
-
-          {/* date of birth */}
-          <div className="flex flex-col gap-3">
-            <label className="text-gray-300">
-              Datum rojstva <span className="text-red-500">*</span>
-            </label>
-
-            <DatePicker value={birthDate} onChange={setBirthDate} />
-          </div>
-
-
-          {/* register button */}
-          <button className="bg-teal-600 text-white font-bold py-4 text-lg rounded-md mt-4 hover:bg-teal-700 transition">
-            Registracija
-          </button>
-        </div>
+        <button
+          onClick={handleRegister}
+          className="bg-teal-600 text-white font-bold py-4 text-lg rounded-md hover:bg-teal-700 transition"
+        >
+          Registracija
+        </button>
       </div>
     </div>
   );
