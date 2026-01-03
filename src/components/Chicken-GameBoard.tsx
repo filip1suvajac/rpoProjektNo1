@@ -81,6 +81,70 @@ const ChickenGameBoard: React.FC<GameBoardProps> = ({
       </div>
 
       {/* OSEBA 4: KONTROLE (buttons) + CSS ANIMACIJE */}
+      tsx<div className="mt-6 space-y-3">
+  {/* GO NEXT ROAD gumb */}
+  {gameState.gameActive && !gameState.isJumping && (
+    <button
+      onClick={onGoNext}
+      disabled={gameState.currentMultiplier >= GAME_CONFIG.MAX_MULTIPLIER}
+      className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:from-slate-600 disabled:to-slate-700 disabled:opacity-50 px-8 py-4 rounded-xl font-bold text-2xl transition-all hover:scale-105 active:scale-95 shadow-xl hover:shadow-blue-500/50 animate-pulse-slow"
+    >
+      ▶️ GO NEXT ROAD
+    </button>
+  )}
+
+  {/* Skok v teku sporočilo */}
+  {gameState.isJumping && (
+    <div className="text-center py-4 text-blue-400 animate-pulse font-bold">
+      ⏳ Skok v teku...
+    </div>
+  )}
+</div>
+
+{/* CSS ANIMACIJE */}
+<style>{`
+  @keyframes bob {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-bob {
+    animation: bob 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 2s linear infinite;
+  }
+  
+  @keyframes barrier-appear {
+    0% { transform: scale(0) translateY(-20px); opacity: 0; }
+    50% { transform: scale(1.2) translateY(0); }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+  }
+  .animate-barrier-appear {
+    animation: barrier-appear 0.5s ease-out;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+  .animate-shake {
+    animation: shake 0.3s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.02); }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+  }
+`}</style>
     </div>
   );
 };
