@@ -2,7 +2,7 @@ import React from "react";
 import { useChickenGame } from "../components/Chicken-useGame";
 import ChickenBetPanel from "../components/Chicken-BetPanel";
 import ChickenGameBoard from "../components/Chicken-GameBoard";
-// import ChickenStatisticsPanel from '../components/Chicken-StatisticsPanel';
+import ChickenStatisticsPanel from '../components/Chicken-StatisticsPanel';
 
 const ChickenRoadGame: React.FC = () => {
   const game = useChickenGame();
@@ -34,7 +34,12 @@ const ChickenRoadGame: React.FC = () => {
 
         {/*Sem bom jaz se dodal koto*/}
 
-        {/*Sem dodaj kodo za ChickenStatisticsPanel in zgoraj odkomentiraj pravil del v importu*/}
+        <div className="lg:col-span-3">
+          <ChickenStatisticsPanel 
+            history={game.betHistory}
+            balance={game.gameState.balance}
+          />
+        </div>
       </div>
     </div>
   );
