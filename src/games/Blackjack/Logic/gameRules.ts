@@ -29,7 +29,7 @@ export function isBlackjack(cards: Card[]): boolean {
 }
 
 export function isBust(cards: Card[]): boolean{
-    return calculateHandValue(cards) < 21;
+    return calculateHandValue(cards) > 21;
 }
 
 export function shouldDealerHit(cards: Card[]): boolean{

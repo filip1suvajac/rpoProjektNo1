@@ -11,6 +11,12 @@ export interface Deck{
     cards: Card[];
 }
 
+function getRandomInt(max: number): number {
+    const randomBuffer = new Uint32Array(1);
+    crypto.getRandomValues(randomBuffer);
+    return randomBuffer[0] % max;
+}
+
 export function createDeck(): Deck{
     const suits: Suit[] = ['hearts', 'diamonds', 'clubs', 'spades'];
     const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
@@ -22,19 +28,18 @@ export function createDeck(): Deck{
       cards.push({
         suit,
         rank,
-        id: `${rank}-${suit}-${Math.random()}`
+        id: `${rank}-${suit}-${crypto.randomUUID()}`
       });
     });
   });
-  
-  return { cards };
+  return shuffleDeck({ cards });
 }
 
 export function shuffleDeck(deck: Deck): Deck {
   const cards = [...deck.cards];
   
   for (let i = cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = getRandomInt(i + 1);
     [cards[i], cards[j]] = [cards[j], cards[i]];
   }
   
