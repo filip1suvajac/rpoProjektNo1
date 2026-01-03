@@ -1,7 +1,7 @@
-import React from 'react';
-import { useChickenGame } from '../components/Chicken-useGame';
-// import ChickenBetPanel from '../components/Chicken-BetPanel';
-import ChickenGameBoard from '../components/Chicken-GameBoard';
+import React from "react";
+import { useChickenGame } from "../components/Chicken-useGame";
+import ChickenBetPanel from "../components/Chicken-BetPanel";
+import ChickenGameBoard from "../components/Chicken-GameBoard";
 // import ChickenStatisticsPanel from '../components/Chicken-StatisticsPanel';
 
 const ChickenRoadGame: React.FC = () => {
@@ -19,18 +19,22 @@ const ChickenRoadGame: React.FC = () => {
           </p>
         </div>
       </div>
-    
-      <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4">
-         {/*Sem dodaj kodo za ChickenbetPanel in zgoraj odkomentiraj pravil del v importu*/}
 
+      <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <div className="lg:col-span-3">
+          <ChickenBetPanel
+            gameState={game.gameState}
+            onBetChange={game.setBetAmount}
+            onDifficultyChange={game.setDifficulty}
+            onStart={game.startGame}
+            onCashOut={game.cashOut}
+            onReset={game.resetGame}
+          />
+        </div>
 
         {/*Sem bom jaz se dodal koto*/}
 
-
-
-
         {/*Sem dodaj kodo za ChickenStatisticsPanel in zgoraj odkomentiraj pravil del v importu*/}
-
       </div>
     </div>
   );
