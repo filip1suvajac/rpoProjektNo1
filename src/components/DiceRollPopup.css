@@ -1,0 +1,99 @@
+/* container must be positioned relatively (parent) so left calc works */
+.dice-roll-popup {
+  position: absolute;
+  top: -56px; /* above the slider track; adjust if your layout differs */
+  left: calc(var(--pos) * 1%);
+  transform: translateX(-50%);
+  pointer-events: none; /* purely display */
+  z-index: 40;
+  transition: top 160ms ease, opacity 120ms ease, transform 120ms ease;
+  opacity: 1;
+  user-select: none;
+}
+
+/* avoid clipping at very edges: clamp left between 8px and calc(100% - 8px) */
+.dice-roll-popup {
+  left: clamp(8px, calc(var(--pos) * 1%), calc(100% - 8px));
+}
+
+/* inner bubble */
+.dice-roll-popup-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  min-width: 56px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+  color: #060606;
+  background: #fff;
+}
+
+/* color variants */
+.dice-roll-popup.win .dice-roll-popup-inner {
+  border: 1px solid rgba(34, 197, 94, 0.9);
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(238,255,240,1));
+}
+
+.dice-roll-popup.lose .dice-roll-popup-inner {
+  border: 1px solid rgba(239, 68, 68, 0.9);
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,240,240,1));
+}
+
+.dice-roll-value {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* optional subtitle line */
+.dice-roll-sub {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+/* the downward pointing arrow that lands on the track */
+.dice-roll-popup::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #fff; /* base arrow color matches bubble */
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
+  z-index: 41;
+}
+
+/* arrow border color variants */
+.dice-roll-popup.win::after {
+  border-top-color: #ffffff; /* keep arrow white */
+  box-shadow: 0 0 0 1px rgba(34,197,94,0.18);
+}
+
+.dice-roll-popup.lose::after {
+  border-top-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(239,68,68,0.18);
+}
+
+/* small responsive tweak */
+@media (max-width: 420px) {
+  .dice-roll-popup-inner {
+    min-width: 46px;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  .dice-roll-popup::after {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 7px solid #fff;
+    bottom: -7px;
+  }
+}

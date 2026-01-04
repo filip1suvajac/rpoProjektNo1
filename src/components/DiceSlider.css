@@ -1,0 +1,101 @@
+.dice-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+/* make the track wrapper position:relative so popups can be absolutely positioned inside */
+.dice-slider-track {
+  position: relative;
+  width: 100%;
+}
+
+/* keep label + value styling */
+.dice-slider-label {
+  font-size: 14px;
+}
+
+.dice-slider-label span {
+  font-weight: bold;
+}
+
+/* =============================
+   SLIDER TRACK
+   ============================= */
+
+.dice-slider input[type="range"] {
+  --green: #22c55e;
+  --red: #ef4444;
+
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+
+  background: linear-gradient(
+    to right,
+    var(--green) 0%,
+    var(--green) calc(var(--value) * 1%),
+    var(--red) calc(var(--value) * 1%),
+    var(--red) 100%
+  );
+}
+
+/* =============================
+   THUMB – CHROME / EDGE
+   ============================= */
+
+.dice-slider input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 14px solid white;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+/* =============================
+   THUMB – FIREFOX
+   ============================= */
+
+.dice-slider input[type="range"]::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 14px solid white;
+  background: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+/* =============================
+   FIREFOX TRACK FIX
+   ============================= */
+
+.dice-slider input[type="range"]::-moz-range-track {
+  height: 6px;
+  background: transparent;
+}
+
+/* =============================
+   LABELS
+   ============================= */
+
+.dice-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* slot used to hold popups/markers */
+.dice-slider-slot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* visuals only */
+}

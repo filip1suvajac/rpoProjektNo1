@@ -1,0 +1,14 @@
+.bet-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.bet-input input {
+  width: 100%;
+}
+
+.bet-multiplier .value {
+  font-weight: bold;
+  font-size: 18px;
+}
