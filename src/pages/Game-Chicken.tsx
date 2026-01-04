@@ -32,7 +32,12 @@ const ChickenRoadGame: React.FC = () => {
           />
         </div>
 
-        {/*Sem bom jaz se dodal koto*/}
+        <div className="lg:col-span-6">
+          <ChickenGameBoard
+            gameState={game.gameState}
+            onGoNext={game.goNextRoad}
+          />
+        </div>
 
         <div className="lg:col-span-3">
           <ChickenStatisticsPanel 
