@@ -1,8 +1,8 @@
 import "./BetControls.css";
 
 type BetControlsProps = {
-  betAmount: number;
-  onBetChange: (value: number) => void;
+  betAmount: string; 
+  onBetChange: (value: string) => void; 
   payoutMultiplier: number;
 };
 
@@ -17,10 +17,10 @@ export default function BetControls({
         <label>Bet Amount</label>
         <input
           type="number"
-          min={0}
-          step={0.01}
+          min="0"
+          step="0.01"
           value={betAmount}
-          onChange={(e) => onBetChange(Number(e.target.value))}
+          onChange={(e) => onBetChange(e.target.value)} 
         />
       </div>
 
