@@ -4,6 +4,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useState } from "react";
+import Tabs from "./components/Tabs";
+import CasinoBetsTable from "./components/CasinoBetsTable";
+import LeaderboardTable from "./components/LeaderboardTable";
+import DiceGame from "./components/DiceGame";
 import TopBar from "./components/TopBar";
 import { AuthProvider } from "./AuthContext"
 import {

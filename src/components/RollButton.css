@@ -1,0 +1,16 @@
+/* src/components/RollButton.css */
+.roll-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #22c55e;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.roll-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
