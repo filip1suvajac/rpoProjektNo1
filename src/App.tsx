@@ -22,6 +22,7 @@ import Footer from "./components/Footer";
 import Team from "./pages/Team";
 import ResponsiblePlaying from "./pages/ResponsiblePlaying";
 import NotFound from "./pages/NotFound";
+import Chicken from "./pages/Game-Chicken";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -98,6 +99,7 @@ function App() {
             <Route path="/ekipa" element={<Team />} />
             <Route path="/pametno-stavi" element={<ResponsiblePlaying />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/chicken" element={<Chicken />} />
 
           </Routes>
           
