@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import BetModal from "./BetModal";
 import type { Bet } from "./BetModal";
 
@@ -26,7 +26,7 @@ const CasinoBetsTable: React.FC = () => {
 
   return (
     <>
-      <div className="w-full bg-slate-800 rounded-xl p-4 text-base text-slate-200 font-medium">
+      <div className="max-w-full w-[1100px] bg-[#0d1c28] rounded-xl p-4 text-base text-slate-200 font-medium">
         <div className="grid grid-cols-6 gap-4 text-slate-400 mb-2 text-sm tracking-wide">
           <span className="text-left">Igra</span>
           <span className="text-left">Uporabnik</span>
