@@ -8,4 +8,5 @@ export type Game = {
   isNew?: boolean;
   isHot?: boolean;
   image: string;
+  link: string
 };

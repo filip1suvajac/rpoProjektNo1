@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { games } from "./games";
 import type { Game, GameCategory } from "./types";
+import { Link } from "react-router-dom";
 
 const categories: GameCategory[] = ["Vse", "Sloti", "Vživo", "Originali", "Miza", "Novo"];
 
@@ -30,7 +31,7 @@ export function GameList() {
   }, [query, activeCategory]);
 
   return (
-    <div className="min-h-screen bg-[#1A2C38] text-white">
+    <div className="bg-[#1A2C38] text-white">
       {/* Top header */}
       <div className="border-t border-white/10 bg-[#1A2C38] backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 py-4">
@@ -160,9 +161,10 @@ function GameCard({ game }: { game: Game }) {
 
         {/* Play overlay */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
-          <button className="pointer-events-auto rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black">
+          <Link to={`/${game.link}`}>
+          <button className="pointer-events-auto rounded-xl bg-white px-4 py-2 text-sm font-semibold hover:cursor-pointer text-black">
             Igraj
-          </button>
+          </button></Link>
         </div>
       </div>
 

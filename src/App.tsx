@@ -4,9 +4,6 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useState } from "react";
-import Tabs from "./components/Tabs";
-import CasinoBetsTable from "./components/CasinoBetsTable";
-import LeaderboardTable from "./components/LeaderboardTable";
 import DiceGame from "./components/DiceGame";
 import TopBar from "./components/TopBar";
 import { AuthProvider } from "./AuthContext"
@@ -22,7 +19,8 @@ import Footer from "./components/Footer";
 import Team from "./pages/Team";
 import ResponsiblePlaying from "./pages/ResponsiblePlaying";
 import NotFound from "./pages/NotFound";
-import Chicken from "./pages/Game-Chicken";
+import ChickenRoadGame from "./pages/GameChicken";
+import Blackjack from "./pages/Blackjack";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -98,8 +96,10 @@ function App() {
             <Route path="/registracija" element={<Register />} />
             <Route path="/ekipa" element={<Team />} />
             <Route path="/pametno-stavi" element={<ResponsiblePlaying />} />
+            <Route path="/chicken" element={<ChickenRoadGame />} />
+            <Route path="/dice" element={<DiceGame />} />
+            <Route path="/blackjack" element={<Blackjack />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/chicken" element={<Chicken />} />
 
           </Routes>
           
