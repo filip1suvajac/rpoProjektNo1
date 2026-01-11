@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { type GameState, GAME_CONFIG } from "./Chicken-types";
-import ChickenCar from "./Chicken-Car";
+import ChickenCar from "./Chicken-car";
 import ChickenBarrier from "./Chicken-Barrier";
 import ChickenRoasted from "./Chicken-Roasted";
 
